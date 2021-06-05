@@ -1,0 +1,7 @@
+{
+  "devDependencies": {
+    "serverless": "^2.44.0",
+    "serverless-rust": "^0.3.8"
+  },
+  "name": "docx_api"
+}
