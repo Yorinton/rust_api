@@ -7,3 +7,4 @@ edition = "2018"
 tokio = { version = "1.6.1", features = ["macros", "rt", "rt-multi-thread"] }
 lambda = { git = "https://github.com/awslabs/aws-lambda-rust-runtime.git", branch = "master"}
 serde_json = "1.0"
+docx-rs = "0.2.0"
