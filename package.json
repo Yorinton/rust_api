@@ -1,7 +1,7 @@
 {
   "devDependencies": {
     "serverless": "^2.44.0",
-    "serverless-rust": "^0.3.8"
+    "serverless-rust": "git+https://github.com/softprops/serverless-rust.git#ebe43ceacfb7f770569e98e3dfb4bbb6eba0d88d"
   },
   "name": "docx_api"
 }
