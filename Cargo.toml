@@ -4,7 +4,9 @@ version = "0.1.0"
 edition = "2018"
 
 [dependencies]
-tokio = { version = "1.6.1", features = ["macros", "rt", "rt-multi-thread"] }
+tokio = { version = "0.2.0", features = ["full"] }
+tokio-compat-02 = "0.2.0"
 lambda = { git = "https://github.com/awslabs/aws-lambda-rust-runtime.git", branch = "master"}
 serde_json = "1.0"
+serde = "1.0.126"
 docx-rs = "0.2.0"
