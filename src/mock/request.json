@@ -1,0 +1,9 @@
+{
+    "body": "{\n \"title\": \"タイトル\",\n \"header\": \"表題文\",\n \"sections\": [\n {\n \"title\": \"項目１のタイトル\",\n \"paragraphs\": [\n {\n \"body\": \"段落１\\n段落１\",\n \"sentences\": []\n }\n ],\n \"line_no\": 1\n },\n {\n \"title\": \"項目２のタイトル\",\n \"paragraphs\": [\n {\n \"body\": \"\",\n \"sentences\": [\n {\n \"body\": \"文章１\\n文章１\"\n }\n ]\n }\n ]\n },\n {\n \"title\": \"項目３のタイトル\",\n \"paragraphs\": [\n {\n \"body\": \"段落２段落２\",\n \"sentences\": [\n {\n \"body\": \"文章１\\n文章１\"\n },\n {\n \"body\": \"文章２文章２\"\n },\n {\n \"body\": \"文章３文章３\"\n }\n ]\n }\n ]\n },\n {\n \"title\": \"項目４のタイトル\",\n \"paragraphs\": [\n {\n \"body\": \"段落３段落３\",\n \"sentences\": [\n {\n \"body\": \"文章１\\n文章１\"\n }\n ]\n },\n {\n \"body\": \"段落４段落４\",\n \"sentences\": [\n {\n \"body\": \"文章１\\n文章１\"\n }\n ]\n },\n {\n \"body\": \"段落５段落５\",\n \"sentences\": [\n {\n \"body\": \"文章１文章１\"\n },\n {\n \"body\": \"文章２文章２\"\n }\n ]\n }\n ]\n }\n ]\n }\n ",
+    "method": "POST",
+    "principalId": "",
+    "stage": "dev",
+    "headers": {
+        "Content-Type": "application/json"
+    }
+}
