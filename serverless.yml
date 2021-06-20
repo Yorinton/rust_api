@@ -10,7 +10,7 @@
 #    docs.serverless.com
 #
 # Happy Coding!
-service: docx-api
+service: rust-api
 useDotenv: true
 custom:
   rust:
@@ -60,7 +60,7 @@ functions:
     # handler value syntax is `{cargo-package-name}.{bin-name}`
     # or `{cargo-package-name}` for short when you are building a
     # default bin for a given package.
-    handler: docx_api
+    handler: rust_api
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details

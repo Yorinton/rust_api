@@ -1,5 +1,5 @@
 [package]
-name = "docx_api"
+name = "rust_api"
 version = "0.1.0"
 edition = "2018"
 
