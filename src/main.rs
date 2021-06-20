@@ -1,7 +1,9 @@
 use lambda::{handler_fn, Context};
 use serde_json::Value;
 use serde::{Deserialize, Serialize};
-use std::cmp::PartialEq; 
+use std::cmp::PartialEq;
+mod docx;
+use docx::{Doc};
 
 type Error = Box<dyn std::error::Error + Sync + Send + 'static>;
 
@@ -12,7 +14,12 @@ async fn main() -> Result<(), Error> {
 }
 
 async fn handler(event: Value, _: Context) -> Result<Response, Error> {
-    let response = Response::new(200, event);
+    let doc: Doc = serde_json::from_value(event).unwrap();
+    match docx::create_docx(doc) {
+        Ok(()) => println!("成功!"),
+        Err(e) => println!("エラー発生：{}", e)
+    };
+    let response = Response::new(200, Value::String("aa".to_string()));
     Ok(response)
 }
 
@@ -44,13 +51,90 @@ mod tests {
     #[tokio::test]
     async fn handler_handles() {
         let event = json!({
-            "answer": 42
-        });
+            "title": "タイトル",
+            "header": "表題文",
+            "sections": [
+              {
+                "title": "項目１のタイトル",
+                "paragraphs": [
+                  {
+                    "body": "段落１\n段落１",
+                    "sentences": []
+                  }
+                ],
+                "line_no": 1
+              },
+              {
+                "title": "項目２のタイトル",
+                "paragraphs": [
+                  {
+                    "body": "",
+                    "sentences": [
+                      {
+                        "body": "文章１\n文章１"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "title": "項目３のタイトル",
+                "paragraphs": [
+                  {
+                    "body": "段落２段落２",
+                    "sentences": [
+                      {
+                        "body": "文章１\n文章１"
+                      },
+                      {
+                        "body": "文章２文章２"
+                      },
+                      {
+                        "body": "文章３文章３"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "title": "項目４のタイトル",
+                "paragraphs": [
+                  {
+                    "body": "段落３段落３",
+                    "sentences": [
+                      {
+                        "body": "文章１\n文章１"
+                      }
+                    ]
+                  },
+                  {
+                    "body": "段落４段落４",
+                    "sentences": [
+                      {
+                        "body": "文章１\n文章１"
+                      }
+                    ]
+                  },
+                  {
+                    "body": "段落５段落５",
+                    "sentences": [
+                      {
+                        "body": "文章１文章１"
+                      },
+                      {
+                        "body": "文章２文章２"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          });
         assert_eq!(
             handler(event.clone(), Context::default())
                 .await
                 .expect("expected Ok(_) value"),
-            Response::new(200, event)
+            Response::new(200, Value::String("aa".to_string()))
         )
     }
 }
