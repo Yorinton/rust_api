@@ -5,6 +5,8 @@ const DUMMY: &str = "こんちわ";
 
 pub fn create_docx(doc: Doc) -> Result<(), DocxError> {
     println!("{:?}", doc);
+    // lambdaで一時ファイルをファイルシステムに保存する際は、
+    // /tmp/配下にしないとRead-Onlyと怒られる
     let path = std::path::Path::new("/tmp/hello.docx");
     let file = std::fs::File::create(&path).unwrap();
     Docx::new()
