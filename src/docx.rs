@@ -13,6 +13,8 @@ pub fn create_docx(doc: Doc) -> Result<(), DocxError> {
         .add_numbering(Numbering::new(2, 2));
     
     for section in doc.sections.iter() {
+        // .add_paragraphでdocxから値の所有権を奪い、新たなDocx型の値を返却している
+        // 新しいDocx型の値を変数docxに束縛しているため、use of moved valueにならない
         docx = docx.add_paragraph(Paragraph::new().add_run(Run::new().add_text(&section.title)));
         for paragraph in section.paragraphs.iter() {
             docx = docx.add_paragraph(Paragraph::new().add_run(Run::new().add_text(&paragraph.body)));
