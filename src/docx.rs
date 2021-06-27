@@ -11,6 +11,8 @@ pub fn create_docx(doc: Doc) -> Result<(), DocxError> {
         .add_paragraph(Paragraph::new().add_run(Run::new().add_text(doc.header)).align(AlignmentType::Center))
         .add_paragraph(Paragraph::new())
         .add_numbering(Numbering::new(2, 2));
+    
+    // @TODO ループ内で所有権を奪う処理が必要な場合のもっと良い対応ないか調査
     for section in doc.sections.iter() {
         docx = docx.clone().add_paragraph(Paragraph::new().add_run(Run::new().add_text(&section.title)));
         for paragraph in section.paragraphs.iter() {
