@@ -30,7 +30,9 @@ pub fn create_docx(doc: Doc) -> Result<(), DocxError> {
     // 生成したファイルをbase64encode
     let mut file = std::fs::File::open(&path).unwrap();
     let mut buffer = Vec::new();
+    // EOFまでのすべてのバイトを読み取り、bufferに配置
     file.read_to_end(&mut buffer).unwrap();
+    // ファイルをbase64encodeする場合は、encodeメソッドにそのファイルのバイト列を指定する
     let base64 = base64::encode(buffer);
     println!("{:?}", base64);
     Ok(())
