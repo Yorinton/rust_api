@@ -10,3 +10,4 @@ lambda = { git = "https://github.com/awslabs/aws-lambda-rust-runtime.git", branc
 serde_json = "1.0"
 serde = "1.0.126"
 docx-rs = "0.2.0"
+base64 = "0.13.0"
