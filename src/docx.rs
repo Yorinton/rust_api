@@ -1,8 +1,10 @@
+use std::io::Read;
+
 pub use docx_rs::*;
 use serde::{Deserialize, Serialize};
+use base64;
 
 pub fn create_docx(doc: Doc) -> Result<(), DocxError> {
-    println!("{:?}", doc);
     // lambdaで一時ファイルをファイルシステムに保存する際は、
     // /tmp/配下にしないとRead-Onlyと怒られる
     let path = std::path::Path::new("/tmp/hello.docx");
@@ -24,6 +26,13 @@ pub fn create_docx(doc: Doc) -> Result<(), DocxError> {
         }
     }
     docx.build().pack(file)?;
+    
+    // 生成したファイルをbase64encode
+    let mut file = std::fs::File::open(&path).unwrap();
+    let mut buffer = Vec::new();
+    file.read_to_end(&mut buffer).unwrap();
+    let base64 = base64::encode(buffer);
+    println!("{:?}", base64);
     Ok(())
 }
 
